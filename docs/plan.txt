@@ -17,7 +17,7 @@ Breaking down functionality:
 
 6. Check for lose conditions
     + no three in a row
-    + all 9 spots have been filled
+    + all 9 spots have been filled without three in a row
 
 7. Restart/New Game button renders with a win or a loss
 (Oho, ho, three in a row)

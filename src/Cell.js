@@ -1,12 +1,11 @@
 import React from "react";
 
-function Cell() {
-
-    // TODO: add click handler to each cell
-
-    // TODO: style cells to make a grid
-
-  return <div id="cell" class="grid-buttons"></div>;
+function Cell({ value, clickHandler }) {
+  return (
+    <button id="cell" className="grid-buttons" onClick={clickHandler}>
+      {value}
+    </button>
+  );
 }
 
 export default Cell;
