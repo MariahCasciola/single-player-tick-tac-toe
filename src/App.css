@@ -4,10 +4,22 @@
   align-items: center;
 }
 
-.grid-buttons {
+.grid-buttons-red {
   width: 50px;
   height: 50px;
   border: solid black;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.grid-buttons-blue {
+  width: 50px;
+  height: 50px;
+  border: solid black;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .start-button {

@@ -1,23 +1,21 @@
 Breaking down functionality:
 
 1. Press Start 
-+will decide if AI goes first or player goes first will use true or false logicinstric
-(whoever goes first is player one, whoever goes second is player 2)
++   will decide if AI goes first or player goes first
++   whoever goes first is player X, whoever goes second is player O
 
-2. Player 1 places an X
+2. AI will place an letter in a random blank spot
 
-3. Player 2 places an O
+3. AI waits for single-player to select a button
 
-4a. AI will place an letter in a random blank spot
-
-4b. AI waits for single-player to select a button
-
-5. Check for win conditions
+4.Check for win conditions
     +there are 8 combinations for three in a row
+ 
 
-6. Check for lose conditions
+5. Check for lose conditions
     + no three in a row
     + all 9 spots have been filled without three in a row
 
-7. Restart/New Game button renders with a win or a loss
+6. Restart/New Game button renders with a win or a loss
 (Oho, ho, three in a row)
+
