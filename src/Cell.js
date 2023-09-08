@@ -5,11 +5,11 @@ function Cell({ value, clickHandler }) {
   //DONE: if the value is o css blue
 
   return value === "X" ? (
-    <button id="cell" className="grid-buttons-red" onClick={clickHandler}>
+    <button id="cell" className="grid-buttons red" onClick={clickHandler}>
       {value}
     </button>
   ) : (
-    <button id="cell" className="grid-buttons-blue" onClick={clickHandler}>
+    <button id="cell" className="grid-buttons blue" onClick={clickHandler}>
       {value}
     </button>
   );
