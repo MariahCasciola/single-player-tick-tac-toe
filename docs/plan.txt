@@ -1,7 +1,7 @@
-Breaking down functionality:
+Breaking down logic:
 
 1. Press Start 
-+   will decide if AI goes first or player goes first
++   will decide if the program or the player goes first
 +   whoever goes first is player X, whoever goes second is player O
 
 2. AI will place an letter in a random blank spot
@@ -10,7 +10,6 @@ Breaking down functionality:
 
 4.Check for win conditions
     +there are 8 combinations for three in a row
- 
 
 5. Check for lose conditions
     + no three in a row
@@ -19,3 +18,8 @@ Breaking down functionality:
 6. Restart/New Game button renders with a win or a loss
 (Oho, ho, three in a row)
 
+List for potential tests:
+
++ x goes first, upon the click of the start button
+
++ 
