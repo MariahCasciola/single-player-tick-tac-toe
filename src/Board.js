@@ -7,11 +7,6 @@ function Board() {
   const [program, setProgram] = useState("");
   const [cells, setCells] = useState(Array(9).fill(null));
 
-  // helper function that decides if the player or the program plays first
-  const getRandomInt = (num) => {
-    return Math.floor(Math.random() * num);
-  };
-
   // all possible winning conditions
   function winningConditions(cells) {
     const threeInArow = [
@@ -27,7 +22,7 @@ function Board() {
 
     for (let i = 0; i < threeInArow.length; i++) {
       let [cellOne, cellTwo, cellThree] = threeInArow[i];
-      //   check if any cell data matches threeInARow array
+      // check if any cell data matches threeInARow array
       if (
         cells[cellOne] &&
         cells[cellOne] === cells[cellTwo] &&
@@ -40,61 +35,75 @@ function Board() {
   }
 
   // returns array of indices that have null values, so the program can check the game state every time it plays
-  function nullIndices(cells) {
-    let emptySpaces = [];
-    for (let i = 0; i < cells.length; i++) {
-      if (cells[i] === null) {
+  function nullIndices(cellsCopy) {
+    const emptySpaces = [];
+    for (let i = 0; i < cellsCopy.length; i++) {
+      if (cellsCopy[i] === null) {
         emptySpaces.push(i);
       }
     }
     return emptySpaces;
   }
 
-  const randomIndex = Math.floor(Math.random() * nullIndices(cells).length - 1);
-
   const assignPlayer = () => {
     // if the player gets 0, they are "X", if the player gets 1 they are "O", the program will be the other player
-    let number = getRandomInt(2);
+    let number = Math.floor(Math.random() * 2);
     if (number === 0) {
       setPlayer("X");
       setProgram("O");
+      setXIsNext(true);
     } else {
       setPlayer("O");
       setProgram("X");
+      setXIsNext(false);
     }
     return player;
   };
 
+  // playerTurn IS NOT WORKING WHY
+  function playerTurn(i) {
+    const cellsCopy = cells.slice();
+    cellsCopy[i] = player;
+    setXIsNext(!xIsNext);
+    return cellsCopy;
+  }
+
+  function cpuTurn(cellsCopy) {
+    const validMoves = nullIndices(cellsCopy);
+    const randomIndex = Math.floor(Math.random() * validMoves.length);
+    // extract elements from valid moves
+    cellsCopy[validMoves[randomIndex]] = program;
+    setXIsNext(xIsNext);
+    return cellsCopy;
+  }
+
   const startGame = () => {
+    // clears board
+    setCells(Array(9).fill(null));
     assignPlayer();
-    // make x go first
-    if (player === "X") {
-      setXIsNext(true);
-    }
-    if (program === "O") {
-      setXIsNext(false);
-    }
   };
 
-  //   create a click handler for each cell
+  // click handler for each cell on board
   const clickHandler = (i) => {
     if (winningConditions(cells) || cells[i]) {
       return;
     }
-    //shallow copy of the array
-    const cellsCopy = cells.slice();
-    cellsCopy[i] = player;
-    setCells(cellsCopy);
-    setXIsNext(!xIsNext);
+    // players turn
+    const playerBoard = playerTurn(i);
+    // programs turn
+    const cpuBoard = cpuTurn(playerBoard);
+    setCells(cpuBoard);
   };
 
-  // TODO: create a message and reasoning for a cat game
   const winner = winningConditions(cells);
   let status;
   if (winner) {
-    status = winner + " Wins!";
+    status = "Hoho, three in a row! " + winner + " Wins!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
+  }
+  if (!cells.includes(null) && !winningConditions(cells)) {
+    status = "Meow! It's a cat game";
   }
 
   return (
