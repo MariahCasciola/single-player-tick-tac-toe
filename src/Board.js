@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cell from "./Cell";
 
 function Board() {
@@ -60,7 +60,11 @@ function Board() {
     return player;
   };
 
-  // playerTurn IS NOT WORKING WHY
+  // assigns the player randomly to "X" or "O" when the web page loads/is mounted
+  useEffect(() => {
+    assignPlayer();
+  }, []);
+
   function playerTurn(i) {
     const cellsCopy = cells.slice();
     cellsCopy[i] = player;
@@ -77,10 +81,9 @@ function Board() {
     return cellsCopy;
   }
 
-  const startGame = () => {
-    // clears board
+  // clears board
+  const newGame = () => {
     setCells(Array(9).fill(null));
-    assignPlayer();
   };
 
   // click handler for each cell on board
@@ -128,9 +131,9 @@ function Board() {
         <button
           id="start-button"
           className="center start-button"
-          onClick={() => startGame()}
+          onClick={() => newGame()}
         >
-          START
+          RESTART
         </button>
       </div>
     </div>

@@ -2,24 +2,19 @@
 
 ## Breaking down logic
 
-+ Pressing Start chooses if the player is "X" or "O".
++ Page loading chooses if the player is "X" or "O".
 
 + Program will place an letter in a random blank spot.
 
-+ Program waits for single-player to select start.
++ Program waits for single-player to make a move.
 
 + Check for win conditions.
 
 + There are 8 combinations for three in a row.
 
-+ Check for lose conditions.
-
-+ Such as no three in a row.
++ Check for lose conditions, such as no three in a row.
 
 + All 9 spots have been filled without three in a row.
-
-+ Restart/New Game button renders with a win or a loss.
-(Oho, ho, three in a row)
 
 ## Completed Tasks
 
@@ -29,18 +24,22 @@
 
 + Cells are disabled after a win or a cat game.
 
++ Change START to RESTART, so the user can play as soon as the webapp loads and triggers a board clear with RESTART.
+
 ## Pending Tasks
 
-+ Create toggle for START/NEW GAME, so the user can trigger the board clear.
++ Write tests.
 
-+ Cells are disabled until the player clicks start or new game.
++ Program should not take their turn if the player wins.
 
 + X must go first instead of player going first every game.
 
-+ Create a program that plays to win.
++ Program should implement winningConditions function in it's turn.
 
 + Create a better grid for the cells.
 
 + Create hover effect for player's next move.
 
 + Optional, but very desired: Render a little cat when there is a cat game.
+
++ Optional, render a coin toss when clicking start.
