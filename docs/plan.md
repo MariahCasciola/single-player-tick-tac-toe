@@ -16,6 +16,14 @@
 
 + All 9 spots have been filled without three in a row.
 
+## CPU Tic Tac Toe Stragies
+
++ Start in a corner, unless the player takes that corner.
+
++ If all the corners are taken, take position 4 at the center.
+
++ Check to see if the player wins next turn while on CPUs turn.
+
 ## Completed Tasks
 
 + Pressing start will choose who is "X" and "O" at random.
@@ -25,6 +33,8 @@
 + Cells are disabled after a win or a cat game.
 
 + Change START to RESTART, so the user can play as soon as the webapp loads and triggers a board clear with RESTART.
+
++ Program will place it's piece in the available corners, or the center, if those cells are occupied, it will place it's piece at random.
 
 ## Pending Tasks
 

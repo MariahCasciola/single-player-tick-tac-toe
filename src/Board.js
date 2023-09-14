@@ -3,13 +3,14 @@ import Cell from "./Cell";
 
 function Board() {
   const [xIsNext, setXIsNext] = useState(true);
+  // const [xFirst, setXFirst] = useState(true);
   const [player, setPlayer] = useState("");
   const [program, setProgram] = useState("");
   const [cells, setCells] = useState(Array(9).fill(null));
 
   // all possible winning conditions
-  function winningConditions(cells) {
-    const threeInArow = [
+  function whoWins(cells) {
+    const threeInARow = [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -20,8 +21,8 @@ function Board() {
       [2, 4, 6],
     ];
 
-    for (let i = 0; i < threeInArow.length; i++) {
-      let [cellOne, cellTwo, cellThree] = threeInArow[i];
+    for (let i = 0; i < threeInARow.length; i++) {
+      let [cellOne, cellTwo, cellThree] = threeInARow[i];
       // check if any cell data matches threeInARow array
       if (
         cells[cellOne] &&
@@ -72,11 +73,36 @@ function Board() {
     return cellsCopy;
   }
 
-  function cpuTurn(cellsCopy) {
+  const checkIfPlayerWins = () => {
+    //stop the player from winning when it is the program's turn
+    // make a copy of cells
+    // check threeInARow
+    // check if x indices match 2 of each threeInARow sub array
+  };
+
+  // TODO: check if x will win if the cpu
+  // for program to pick a corner, if all corners are full pick center
+  const randomCorner = (cellsCopy) => {
+    const fourCorners = [0, 2, 6, 8];
     const validMoves = nullIndices(cellsCopy);
+    for (let i = 0; i < validMoves.length; i++) {
+      for (let j = i + 1; j < fourCorners.length; j++) {
+        if (validMoves.includes(fourCorners[j])) {
+          return fourCorners[j];
+        } else if (
+          !validMoves.includes(fourCorners[j]) &&
+          validMoves.includes(4)
+        )
+          return 4;
+      }
+    }
     const randomIndex = Math.floor(Math.random() * validMoves.length);
-    // extract elements from valid moves
-    cellsCopy[validMoves[randomIndex]] = program;
+    if (validMoves.includes(randomIndex)) return randomIndex;
+  };
+
+  function cpuTurn(cellsCopy) {
+    const corner = randomCorner(cellsCopy);
+    cellsCopy[corner] = program;
     setXIsNext(xIsNext);
     return cellsCopy;
   }
@@ -88,7 +114,8 @@ function Board() {
 
   // click handler for each cell on board
   const clickHandler = (i) => {
-    if (winningConditions(cells) || cells[i]) {
+    // stops a player from overiding the value of an occupied cell
+    if (whoWins(cells) || cells[i]) {
       return;
     }
     // players turn
@@ -98,14 +125,15 @@ function Board() {
     setCells(cpuBoard);
   };
 
-  const winner = winningConditions(cells);
+  // TODO: remake into a function that returns status?
+  const winner = whoWins(cells);
   let status;
   if (winner) {
     status = "Hoho, three in a row! " + winner + " Wins!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
-  if (!cells.includes(null) && !winningConditions(cells)) {
+  if (!cells.includes(null) && !whoWins(cells)) {
     status = "Meow! It's a cat game";
   }
 
