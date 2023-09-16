@@ -10,7 +10,7 @@ function App() {
         </h1>
       </header>
       <main>
-       <Board/>
+        <Board />
       </main>
     </>
   );

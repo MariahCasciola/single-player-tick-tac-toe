@@ -20,21 +20,29 @@
 
 + Start in a corner, unless the player takes that corner.
 
-+ If all the corners are taken, take position 4 at the center.
-
 + Check to see if the player wins next turn while on CPUs turn.
+
++ If 
 
 ## Completed Tasks
 
-+ Pressing start will choose who is "X" and "O" at random.
++ Loading page will choose who is "X" and "O" at random.
 
-+ The program plays against a human player by placing "X" or "O" at random.
++ Program should implement programWins function on it's turn, in order for the program to block the player, win the game, or force a cat game.
+
++ The program will place "X" or "O" at a random empty corner cell.
+
++ The program will place an "X" or "O" in the center when the corners are occupied.
+
++ The program will place "X" or "O" at random empty cell.
 
 + Cells are disabled after a win or a cat game.
 
 + Change START to RESTART, so the user can play as soon as the webapp loads and triggers a board clear with RESTART.
 
 + Program will place it's piece in the available corners, or the center, if those cells are occupied, it will place it's piece at random.
+
+
 
 ## Pending Tasks
 
@@ -43,8 +51,6 @@
 + Program should not take their turn if the player wins.
 
 + X must go first instead of player going first every game.
-
-+ Program should implement winningConditions function in it's turn.
 
 + Create a better grid for the cells.
 
