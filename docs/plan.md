@@ -44,15 +44,15 @@
 
 + Program will place it's piece in the available corners, or the center, if those cells are occupied, it will place it's piece at random.
 
-## Future Developement
-
 + Design a more appealing UI.
+
+## Future Developement
 
 + Render a little cat when there is a cat game.
 
 + Write tests.
 
-+ CPU must go first sometimes instead of player going first every game.
++ Opt for the CPU to go first sometimes instead of player going first every game.
 
 + Loading page will choose who is "X" and "O" at random.
 

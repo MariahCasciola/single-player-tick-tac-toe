@@ -1,14 +1,22 @@
 import React from "react";
 
-function Cell({ value, clickHandler }) {
+function Cell({ value, clickHandler, className }) {
   return value === "X" ? (
-    <button id="cell" className="grid-buttons red" onClick={clickHandler}>
+    <div
+      id="cell"
+      className={`grid-buttons x center ${className}`}
+      onClick={clickHandler}
+    >
       {value}
-    </button>
+    </div>
   ) : (
-    <button id="cell" className="grid-buttons blue" onClick={clickHandler}>
+    <div
+      id="cell"
+      className={`grid-buttons o center ${className}`}
+      onClick={clickHandler}
+    >
       {value}
-    </button>
+    </div>
   );
 }
 

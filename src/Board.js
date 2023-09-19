@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Cell from "./Cell";
 
 function Board() {
@@ -38,13 +38,13 @@ function Board() {
 
   // returns array of indices that have null values, so the program can check the game state every time it plays
   function nullIndices(cellsCopy) {
-    return cellsCopy
-      .map((__cell, index) => {
-        return index;
-      })
-      .filter((index) => {
-        return cells[index] === null;
-      });
+    const emptySpaces = [];
+    for (let i = 0; i < cellsCopy.length; i++) {
+      if (cellsCopy[i] === null) {
+        emptySpaces.push(i);
+      }
+    }
+    return emptySpaces;
   }
 
   // returns indices of moves made by the player or the program
@@ -186,25 +186,59 @@ function Board() {
   return (
     <div id="board">
       <div className="row center">
-        <Cell value={cells[0]} clickHandler={() => clickHandler(0)} />
-        <Cell value={cells[1]} clickHandler={() => clickHandler(1)} />
-        <Cell value={cells[2]} clickHandler={() => clickHandler(2)} />
+        <Cell
+          className="right-border bottom-border"
+          value={cells[0]}
+          clickHandler={() => clickHandler(0)}
+        />
+        <Cell
+          className="right-border bottom-border"
+          value={cells[1]}
+          clickHandler={() => clickHandler(1)}
+        />
+        <Cell
+          className="bottom-border"
+          value={cells[2]}
+          clickHandler={() => clickHandler(2)}
+        />
       </div>
       <div className="row center">
-        <Cell value={cells[3]} clickHandler={() => clickHandler(3)} />
-        <Cell value={cells[4]} clickHandler={() => clickHandler(4)} />
-        <Cell value={cells[5]} clickHandler={() => clickHandler(5)} />
+        <Cell
+          className="right-border bottom-border"
+          value={cells[3]}
+          clickHandler={() => clickHandler(3)}
+        />
+        <Cell
+          className="right-border bottom-border"
+          value={cells[4]}
+          clickHandler={() => clickHandler(4)}
+        />
+        <Cell
+          className="bottom-border"
+          value={cells[5]}
+          clickHandler={() => clickHandler(5)}
+        />
       </div>
       <div className="row center">
-        <Cell value={cells[6]} clickHandler={() => clickHandler(6)} />
-        <Cell value={cells[7]} clickHandler={() => clickHandler(7)} />
+        <Cell
+          className="right-border"
+          value={cells[6]}
+          clickHandler={() => clickHandler(6)}
+        />
+        <Cell
+          className="right-border"
+          value={cells[7]}
+          clickHandler={() => clickHandler(7)}
+        />
         <Cell value={cells[8]} clickHandler={() => clickHandler(8)} />
       </div>
-      <div className="center">{status}</div>
+      <div id="status" className="center">
+        {status}
+      </div>
       <div className="center">
         <button
-          id="start-button"
-          className="center start-button"
+          id="restart"
+          className="center restart-button"
           onClick={() => newGame()}
         >
           RESTART
