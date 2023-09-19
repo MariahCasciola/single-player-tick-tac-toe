@@ -10,7 +10,7 @@
 
 + There are 8 way to get three in a row.
 
-+ Check for ways to win, and ways to block the player. 
++ Check for ways to win, and ways to block the player.
 
 ## CPU Tic-Tac-Toe Stragies
 
@@ -46,9 +46,11 @@
 
 + Design a more appealing UI.
 
-## Future Developement
-
 + Render a little cat when there is a cat game.
+
++ Write a more descriptive README.md
+
+## Future Developement
 
 + Write tests.
 

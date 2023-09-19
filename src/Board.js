@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Cell from "./Cell";
+import Restart from "./Restart";
 
 function Board() {
   const [xIsNext, setXIsNext] = useState(true);
@@ -235,15 +236,12 @@ function Board() {
       <div id="status" className="center">
         {status}
       </div>
-      <div className="center">
-        <button
-          id="restart"
-          className="center restart-button"
-          onClick={() => newGame()}
-        >
-          RESTART
-        </button>
-      </div>
+      <Restart
+        newGame={() => {
+          newGame();
+        }}
+        status={status}
+      />
     </div>
   );
 }
