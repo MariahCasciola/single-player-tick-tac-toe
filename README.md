@@ -4,11 +4,11 @@
 
 + This game will strategically play tic-tac-toe against a human player.
 
-+ The player will always go first, and will always be "X" on their turn.
++ The player will always go first and be "X" on their turn.
 
-+ Once a player clicks on a cell, the program will place it's piece on the board.
++ Once a player clicks on a cell, the program will place its piece on the board.
 
-+ When the game is a tie, a cat will render on the screen.
++ A cat will render on the screen when the game is a tie.
 
 + The CSS code for the cat is credited to this website [here](<https://codepen.io/johanmouchet>).
 
@@ -28,6 +28,6 @@ JavaScript, HTML, CSS, SASS, ReactJS, and NodeJS.
 
 ![Empty board when the game starts](/images/empty-board.png)
 
-## Depolyment
+## Deployment
 
 + Deployed with [Vercel](https://single-player-tic-tac-toe.vercel.app/)
