@@ -104,12 +104,13 @@ function Board() {
 
   function playerTurn(i) {
     const cellsCopy = cells.slice();
+    // assigns the cell value to player, which is "X"
     cellsCopy[i] = player;
     setXIsNext(!xIsNext);
     return cellsCopy;
   }
 
-  // potentially split into random corner, center, and randomCell functions
+  // will return random corner values, and check if they are available in the grid, or return -1
   const randomCorner = (cellsCopy) => {
     const fourCorners = [0, 2, 6, 8];
     const randomCnrIndx = Math.floor(Math.random() * fourCorners.length);
@@ -122,6 +123,7 @@ function Board() {
     return -1;
   };
 
+  // will return a random indice that is available on the grid
   function randomCell(cellsCopy) {
     const validMoves = nullIndices(cellsCopy);
     const randomIndex = Math.floor(Math.random() * validMoves.length);
@@ -143,6 +145,7 @@ function Board() {
 
     if (cpuMove < 0) cpuMove = randomCell(cellsCopy);
 
+    // assigns the cell value to program, which is "O"
     cellsCopy[cpuMove] = program;
     setXIsNext(xIsNext);
     return cellsCopy;
@@ -162,7 +165,7 @@ function Board() {
     // players turn
     const playerBoard = playerTurn(i);
 
-    // if there is no
+    // if the player wins, the cpu will not place "O" on the grid
     if (whoWins(playerBoard) === "X") {
       setCells(playerBoard);
       return;
@@ -172,17 +175,20 @@ function Board() {
     setCells(cpuBoard);
   };
 
-  // TODO: remake into a function that returns status
-  const winner = whoWins(cells);
-  let status;
-  if (winner) {
-    status = "Hoho, three in a row! " + winner + " Wins!";
-  } else {
-    status = "You are: " + (xIsNext ? "X" : "O");
-  }
-  if (!cells.includes(null) && !whoWins(cells)) {
-    status = "Meow! It's a cat game";
-  }
+  // returns status of that displays below board
+  const status = () => {
+    const winner = whoWins(cells);
+    let status;
+    if (winner) {
+      status = "Hoho, three in a row! " + winner + " Wins!";
+    } else {
+      status = "You are: " + (xIsNext ? "X" : "O");
+    }
+    if (!cells.includes(null) && !whoWins(cells)) {
+      status = "Meow! It's a cat game";
+    }
+    return status;
+  };
 
   return (
     <div id="board">
@@ -234,13 +240,13 @@ function Board() {
         <Cell value={cells[8]} clickHandler={() => clickHandler(8)} />
       </div>
       <div id="status" className="center">
-        {status}
+        {status()}
       </div>
       <Restart
         newGame={() => {
           newGame();
         }}
-        status={status}
+        status={status()}
       />
     </div>
   );
