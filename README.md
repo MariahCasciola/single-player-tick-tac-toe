@@ -1,5 +1,9 @@
 # Single Player Tic Tac Toe
 
+## Deployment
+
++ Deployed with [Vercel](https://single-player-tic-tac-toe.vercel.app/)
+  
 ## Description
 
 + This game will strategically play tic-tac-toe against a human player.
@@ -27,7 +31,3 @@ JavaScript, HTML, CSS, SASS, ReactJS, and NodeJS.
 ![Board state when there is a cat-game](/images/cat-game.png)
 
 ![Empty board when the game starts](/images/empty-board.png)
-
-## Deployment
-
-+ Deployed with [Vercel](https://single-player-tic-tac-toe.vercel.app/)
