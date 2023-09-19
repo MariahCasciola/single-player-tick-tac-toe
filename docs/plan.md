@@ -2,60 +2,62 @@
 
 ## Breaking down logic
 
-+ Page loading chooses if the player is "X" or "O".
-
-+ Program will place an letter in a random blank spot.
-
-+ Program waits for single-player to make a move.
++ Program waits for player to make the first move.
 
 + Check for win conditions.
 
-+ There are 8 combinations for three in a row.
++ Check for lose conditions.
 
-+ Check for lose conditions, such as no three in a row.
++ There are 8 way to get three in a row.
 
-+ All 9 spots have been filled without three in a row.
++ Check for ways to win, and ways to block the player. 
 
-## CPU Tic Tac Toe Stragies
+## CPU Tic-Tac-Toe Stragies
 
 + Start in a corner, unless the player takes that corner.
 
-+ Check to see if the player wins next turn while on CPUs turn.
++ Place in another corner after the .
 
-+ If 
++ Place a in another corner (player will have no choice but to stop you from winning).
+
++ Check for program winning conditions first.
+
++ Check to see if the player wins next turn while on programs turn.
+
++ Block the player from winning.
 
 ## Completed Tasks
 
-+ Loading page will choose who is "X" and "O" at random.
-
-+ Program should implement programWins function on it's turn, in order for the program to block the player, win the game, or force a cat game.
-
-+ The program will place "X" or "O" at a random empty corner cell.
-
-+ The program will place an "X" or "O" in the center when the corners are occupied.
-
-+ The program will place "X" or "O" at random empty cell.
-
-+ Cells are disabled after a win or a cat game.
-
-+ Change START to RESTART, so the user can play as soon as the webapp loads and triggers a board clear with RESTART.
-
-+ Program will place it's piece in the available corners, or the center, if those cells are occupied, it will place it's piece at random.
-
-
-
-## Pending Tasks
-
-+ Write tests.
++ Player can play as soon as the web page loads.
 
 + Program should not take their turn if the player wins.
 
-+ X must go first instead of player going first every game.
++ Program blocks the player, wins the game, or forces a cat game.
 
-+ Create a better grid for the cells.
++ If the center is empty the program will place an "O".
+
++ The program will place "O" at a random empty corner cell.
+
++ The program will place "O" at a random empty cell.
+
++ Cells are disabled for a user to click after a win or a cat game.
+
++ Program will place it's piece in the available corners, or the center, if those cells are occupied, it will place it's piece at random.
+
+## Future Developement
+
++ Design a more appealing UI.
+
++ Render a little cat when there is a cat game.
+
++ Write tests.
+
++ CPU must go first sometimes instead of player going first every game.
+
++ Loading page will choose who is "X" and "O" at random.
+
++ Whoever is "X" will go first.
 
 + Create hover effect for player's next move.
 
-+ Optional, but very desired: Render a little cat when there is a cat game.
-
-+ Optional, render a coin toss when clicking start.
++ Render a coin toss when clicking start.

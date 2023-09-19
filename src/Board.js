@@ -3,12 +3,11 @@ import Cell from "./Cell";
 
 function Board() {
   const [xIsNext, setXIsNext] = useState(true);
-  // const [xFirst, setXFirst] = useState(true);
-  const [player, setPlayer] = useState("");
-  const [program, setProgram] = useState("");
+  const [player, setPlayer] = useState("X");
+  const [program, setProgram] = useState("O");
   const [cells, setCells] = useState(Array(9).fill(null));
 
-  // all possible winning conditions
+  // returns "X", "O", or "null", if it returns null, there is not a winner
   function whoWins(cells) {
     const threeInARow = [
       [0, 1, 2],
@@ -29,43 +28,24 @@ function Board() {
         cells[cellOne] === cells[cellTwo] &&
         cells[cellOne] === cells[cellThree]
       ) {
+        // there is a winner
         return cells[cellOne];
       }
     }
+    // cat game
     return null;
   }
 
   // returns array of indices that have null values, so the program can check the game state every time it plays
-  //cellsCopy.filter((cell, index) => { return cell === null;});
   function nullIndices(cellsCopy) {
-    const emptySpaces = [];
-    for (let i = 0; i < cellsCopy.length; i++) {
-      if (cellsCopy[i] === null) {
-        emptySpaces.push(i);
-      }
-    }
-    return emptySpaces;
+    return cellsCopy
+      .map((__cell, index) => {
+        return index;
+      })
+      .filter((index) => {
+        return cells[index] === null;
+      });
   }
-
-  const assignPlayer = () => {
-    // if the player gets 0, they are "X", if the player gets 1 they are "O", the program will be the other player
-    let number = Math.floor(Math.random() * 2);
-    if (number === 0) {
-      setPlayer("X");
-      setProgram("O");
-      setXIsNext(true);
-    } else {
-      setPlayer("O");
-      setProgram("X");
-      setXIsNext(false);
-    }
-    return player;
-  };
-
-  // assigns the player randomly to "X" or "O" when the web page loads/is mounted
-  useEffect(() => {
-    assignPlayer();
-  }, []);
 
   // returns indices of moves made by the player or the program
   const grabAllMoves = (cells, who) => {
@@ -78,7 +58,7 @@ function Board() {
       });
   };
 
-  // stop the player from winning when it is the program's turn, by blocking, and checks where the program can win
+  // returns winning moves for either the player or the program, or returns negative one for no winning moves
   const programWins = (cells, who) => {
     const validMoves = nullIndices(cells);
     const moves = grabAllMoves(cells, who);
@@ -92,7 +72,7 @@ function Board() {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    // if any of these # are valid, that is a winning move
+    // if any of these #s are valid, that is a winning move
     const playWinCon = threeInARow
       // map the rows of win conditions into the index that program needs to block
       .map((row) => {
@@ -128,60 +108,40 @@ function Board() {
     return cellsCopy;
   }
 
-  // FUTURE OF RANDOM CORNER:
-  // we can improve this with time:
-  // if cpu has a corner, pick the opposite corner, if cpu has 2 opposite corner, then the cpu can pick a random opposite corner
-  // random Corner is only for the first move
-  // DONE: check if player will win if the cpu does block the player
-  // for program to pick a corner, if all corners are full pick center
-
   // potentially split into random corner, center, and randomCell functions
   const randomCorner = (cellsCopy) => {
-    // if all 4 corners are valid, then we take a random corner
-    // if any corner is invalid, we take the center if it is valid
-    // if none of the above, return -1
     const fourCorners = [0, 2, 6, 8];
     const randomCnrIndx = Math.floor(Math.random() * fourCorners.length);
     const validMoves = nullIndices(cellsCopy);
-    for (let i = 0; i < validMoves.length; i++) {
-      for (let j = 0; j < fourCorners.length; j++) {
-        if (validMoves.includes(fourCorners[randomCnrIndx])) {
-          return fourCorners[randomCnrIndx];
-        }
-        if (
-          !validMoves.includes(fourCorners[randomCnrIndx]) &&
-          validMoves.includes(4)
-        )
-          return 4;
-      }
+
+    if (validMoves.includes(fourCorners[randomCnrIndx])) {
+      return fourCorners[randomCnrIndx];
     }
-    // return -1;
+    // no valid corners
+    return -1;
   };
 
-  // DONE: Write a function that will take cellsCopy
-  // And it will return a random valid move.
-  // This function will get called last in cpuTurn if cpuMove is still <0, fucntion called after random corner in cpuTurn
   function randomCell(cellsCopy) {
-    // program cannot take a corner, cannot take the center, take a random valid space
     const validMoves = nullIndices(cellsCopy);
     const randomIndex = Math.floor(Math.random() * validMoves.length);
-    console.log("randomIndex", randomIndex);
-    console.log("validMoves[randomIndex]", validMoves[randomIndex]);
-    // if (validMoves[randomIndex]) return validMoves[randomIndex];
-    // if (validMoves[randomIndex] === undefined) return 1;
     return validMoves[randomIndex];
   }
 
   function cpuTurn(cellsCopy) {
-    let cpuMove = programWins(cellsCopy, program);
-    console.log("cpumove after check program", cpuMove);
+    let cpuMove = -1;
+
+    cpuMove = programWins(cellsCopy, program);
+
     if (cpuMove < 0) cpuMove = programWins(cellsCopy, player);
-    console.log("cpuMove after check player", cpuMove);
+
+    // take the middle
+    const validMoves = nullIndices(cellsCopy);
+    if (validMoves.includes(4)) cpuMove = 4;
+
     if (cpuMove < 0) cpuMove = randomCorner(cellsCopy);
-    console.log("cpuMove after random corner", cpuMove);
+
     if (cpuMove < 0) cpuMove = randomCell(cellsCopy);
-    console.log("cpuMove after random cell", cpuMove);
-    // once one round has passed, check if player will beat program
+
     cellsCopy[cpuMove] = program;
     setXIsNext(xIsNext);
     return cellsCopy;
@@ -200,6 +160,12 @@ function Board() {
     }
     // players turn
     const playerBoard = playerTurn(i);
+
+    // if there is no
+    if (whoWins(playerBoard) === "X") {
+      setCells(playerBoard);
+      return;
+    }
     // programs turn
     const cpuBoard = cpuTurn(playerBoard);
     setCells(cpuBoard);
