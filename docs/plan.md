@@ -16,9 +16,9 @@
 
 + Start in a corner, unless the player takes that corner.
 
-+ Place in another corner after the .
++ Take the center if it is available.
 
-+ Place a in another corner (player will have no choice but to stop you from winning).
++ Place in another corner (player will have no choice but to stop you from winning).
 
 + Check for program winning conditions first.
 
@@ -50,7 +50,15 @@
 
 + Write a more descriptive README.md
 
++ Make threeInARow into a helper function that returns the data so code can be more dry.
+
++ Solve bug that says "You are "O". Solution: when a player wins set xIsNext to true.
+
++ Make font of "X" and "O" bigger.
+
 ## Future Developement
+
++ Make sure lines of grid do not move when a program or player gets three in a row, or ties.
 
 + Write tests.
 

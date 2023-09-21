@@ -8,9 +8,9 @@ function Board() {
   const [program, setProgram] = useState("O");
   const [cells, setCells] = useState(Array(9).fill(null));
 
-  // returns "X", "O", or "null", if it returns null, there is not a winner
-  function whoWins(cells) {
-    const threeInARow = [
+  // returns array with sub arrays that have winning conditions
+  function winCon() {
+    return [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -20,7 +20,11 @@ function Board() {
       [0, 4, 8],
       [2, 4, 6],
     ];
+  }
 
+  // returns "X", "O", or "null", if it returns null, there is not a winner
+  function whoWins(cells) {
+    const threeInARow = winCon();
     for (let i = 0; i < threeInARow.length; i++) {
       const [cellOne, cellTwo, cellThree] = threeInARow[i];
       // check if any cell data matches threeInARow array
@@ -63,16 +67,7 @@ function Board() {
   const programWins = (cells, who) => {
     const validMoves = nullIndices(cells);
     const moves = grabAllMoves(cells, who);
-    const threeInARow = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
+    const threeInARow = winCon();
     // if any of these #s are valid, that is a winning move
     const playWinCon = threeInARow
       // map the rows of win conditions into the index that program needs to block
@@ -164,10 +159,10 @@ function Board() {
     }
     // players turn
     const playerBoard = playerTurn(i);
-
-    // if the player wins, the cpu will not place "O" on the grid
+    // if the player wins, the cpu will not place "O" on the grid, and xIsNext must be set back to true to play as "X" in the next round
     if (whoWins(playerBoard) === "X") {
       setCells(playerBoard);
+      setXIsNext(true);
       return;
     }
     // programs turn
@@ -237,7 +232,11 @@ function Board() {
           value={cells[7]}
           clickHandler={() => clickHandler(7)}
         />
-        <Cell value={cells[8]} clickHandler={() => clickHandler(8)} />
+        <Cell
+          className={""}
+          value={cells[8]}
+          clickHandler={() => clickHandler(8)}
+        />
       </div>
       <div id="status" className="center">
         {status()}
