@@ -180,7 +180,7 @@ function Board() {
       status = "You are: " + (xIsNext ? "X" : "O");
     }
     if (!cells.includes(null) && !whoWins(cells)) {
-      status = "Meow! It's a cat game";
+      status = "Meow! It's a cat game!";
     }
     return status;
   };

@@ -56,9 +56,13 @@
 
 + Make font of "X" and "O" bigger.
 
++ Make sure lines of grid do not move when a program or player gets three in a row, or ties. Fix: placed cat in a flexbox, and gave the board a max and min width.
+
 ## Future Developement
 
-+ Make sure lines of grid do not move when a program or player gets three in a row, or ties.
++ Refactor code to get rid of `magic numbers`, so that code can be more readable, and constant variable will be less of a mystery.
+
++ Find ways to make this game a more extensible system.
 
 + Write tests.
 
@@ -70,4 +74,12 @@
 
 + Create hover effect for player's next move.
 
++ Have CPU's move fade in.
+
 + Render a coin toss when clicking start.
+
++ Refactor the code to make it as modular as possible.
+
++ Make a sliding scale: easy(always random), medium(current difficulty), and hard(always wins, or is always a cat game).
+
++ Very far out developement idea: see if you can make Michaels recrusive Tic-Tac-Toe game for two player.
