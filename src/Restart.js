@@ -1,4 +1,5 @@
 import React from "react";
+import Yarn from "./Yarn";
 
 function Restart({ newGame, status }) {
   return (
@@ -26,10 +27,11 @@ function Restart({ newGame, status }) {
               </div>
               <div className="muzzle"></div>
             </div>
+            <div className="knot"></div>
+            <div className="loop"></div>
+            <div className="loop mirror"> </div>
           </div>
-          <footer id="author" className="center">
-            Pure CSS cat animation by Johan Mochet
-          </footer>
+          <Yarn />
         </div>
       ) : null}
     </>

@@ -66,6 +66,8 @@
 
 + Write tests.
 
++ Make a SASS yarn ball that rolls (install anime.js)
+
 + Opt for the CPU to go first sometimes instead of player going first every game.
 
 + Loading page will choose who is "X" and "O" at random.
