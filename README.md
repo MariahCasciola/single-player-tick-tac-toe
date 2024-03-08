@@ -19,7 +19,7 @@
 ## Technology
 
 ```
-JavaScript, HTML, CSS, SASS, ReactJS, and NodeJS.
+JavaScript, HTML, CSS, SASS, ReactJS, Animejs, and NodeJS.
  ```
 
 ## UI

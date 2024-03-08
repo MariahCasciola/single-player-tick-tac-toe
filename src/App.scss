@@ -1,5 +1,16 @@
+$color-red: red;
+$color-blue: blue;
+$color-purple: #7209b7;
+$color-light-purple: #8222c7;
+$color-pink: #f72585;
+$color-cyan: #4cc9f0;
+$color-royal-blue: #4361ee;
+$color-black: black;
+$color-white: #fff;
+$cat-size: 170px; // Fully responsive for cat
+
 body {
-  background-color: black;
+  background-color: $color-black;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
@@ -7,6 +18,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.direction-col{
+  flex-direction: column;
+}
+
+#board {
+  min-width: 330px;
+  max-width: 330px;
 }
 
 .grid-buttons {
@@ -17,76 +37,137 @@ body {
 }
 
 .right-border {
-  border-right: solid #7209b7;
+  border-right: solid $color-purple;
 }
 
 .bottom-border {
-  border-bottom: solid #7209b7;
+  border-bottom: solid $color-purple;
 }
 
 #title {
-  color: #f72585;
+  color: $color-pink;
 }
 
 #status {
   margin: 10px;
-  color: #4361ee;
+  color: $color-royal-blue;
 }
 
 .x {
-  color: #4361ee
+  color: $color-royal-blue;
 }
 
 .o {
-  color: #4cc9f0;
+  color: $color-cyan;
 }
 
 .restart-button {
-  background-color: #7209b7;
-  color: #4cc9f0;
+  background-color: $color-purple;
+  color: $color-cyan;
   margin: 10px;
   border-radius: 4px;
   border: 0px;
 }
 
-#author{
-  color: white;
-  font-size: 8px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+// Yarn ball
+.yarn-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
+// .yarn-ball{
+//   height: 50px;
+//   width: 50px;
+//   background-color: $color-light-purple;
+//   border: solid $color-purple;
+//   border-radius: 50%;
+//   display: inline-block;
+// }
 
-// everything below is credited to Johan Mouchet from Codepen
-$color-black: black;
-$color-white: #fff;
-$size: 170px; // (Fully responsive)
+// .yarn-strand {
+//   margin: 0 auto;
+//   position: relative;
+//   width: 30px;
+//   height: 40px;
+//   border-top: 1px solid $color-purple;
+//   border-left: 1px solid $color-purple;
+//   border-top-left-radius: 200px;
+//   float: none;
+//   margin-top: 4.5px;
+//   margin-left: 10px;
+//   box-shadow: inset 1px 1px 0 $color-purple;
+// }
+
+// .middle{
+//   margin-top: 2px;
+//   margin-left: 2px;
+// }
+
+.bottom{
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+// Bow
+.knot{
+  position: absolute;
+  top: 74%;
+  left: 43.5%;
+  height:10px;
+  width: 10px;
+  border: solid darkred;
+  background-color: $color-red;
+  border-radius: 30%;
+}
+
+.loop{
+  position: absolute;
+  top: 75%;
+  left: 21.5%;
+  height:10%;
+  width: 20%;
+  border: solid darkred;
+  background-color: $color-red;
+  border-radius: 60% 60% 60% 60% / 30% 30% 70% 70%;
+}
+
+.mirror{
+  position: absolute;
+  top:75%;
+  left:50.5%;
+}
+
+//Cat styling
 
 // Cat
 .cat {
   position: relative;
-  height: $size;
-  width: $size * 1.13;
+  padding-top: 5%;
+  height: $cat-size;
+  width: $cat-size * 1.13;
 }
 
 // Ears
 .ear {
   position: absolute;
-  top: -30%;
+  top: -20%;
+  left: 70%;
   height: 60%;
   width: 25%;
-  background: $color-white;
+  background: $color-light-purple;
 
   // Ear hair
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 24%;
-    height: 10%;
-    width: 5%;
-    border-radius: 50%;
-    background: $color-black;
-  }
+  // &::before,
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 35%;
+  //   height: 10%;
+  //   width: 5%;
+  //   border-radius: 50%;
+  //   background: $color-black;
+  // }
 
   &::after {
     transform-origin: 50% 100%;
@@ -94,7 +175,7 @@ $size: 170px; // (Fully responsive)
 }
 
 .ear--left {
-  left: -7%;
+  left: 0%;
   border-radius: 70% 30% 0% 0% / 100% 100% 0% 0%;
   transform: rotate(-15deg);
 
@@ -126,20 +207,21 @@ $size: 170px; // (Fully responsive)
 // Face
 .face {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  left: 3%;
+  height: 90%;
+  width: 90%;
   background: $color-black;
-  border-radius: 50%;
+  border-radius: 70%;
 }
 
 // Eyes
 .eye {
   position: absolute;
-  top: 35%;
-  height: 30%;
-  width: 31%;
+  top: 26%;
+  height: 28%;
+  width: 28%;
   background: $color-white;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border-radius: 60%;
 
   // Eyelids
   &::after {
@@ -179,21 +261,10 @@ $size: 170px; // (Fully responsive)
       height: 0;
     }
   }
-
-  // Tips of the eyes
-  &::before {
-    content: '';
-    position: absolute;
-    top: 60%;
-    height: 10%;
-    width: 15%;
-    background: $color-white;
-    border-radius: 50%;
-  }
 }
 
 .eye--left {
-  left: 0;
+  left: 8%;
 
   &::before {
     right: -5%;
@@ -201,7 +272,7 @@ $size: 170px; // (Fully responsive)
 }
 
 .eye--right {
-  right: 0;
+  right: 8%;
 
   &::before {
     left: -5%;
@@ -249,11 +320,11 @@ $size: 170px; // (Fully responsive)
   }
 
   .eye--left & {
-    right: 30%;
+    right: 20%;
   }
 
   .eye--right & {
-    left: 30%;
+    left: 20%;
   }
 
   // Glare on the pupil
@@ -272,11 +343,11 @@ $size: 170px; // (Fully responsive)
 // Muzzle
 .muzzle {
   position: absolute;
-  top: 60%;
+  top: 52%;
   left: 50%;
   height: 6%;
   width: 10%;
-  background: $color-white;
+  background: lightpink;
   transform: translateX(-50%);
   border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
 }
