@@ -69,12 +69,6 @@ body {
   border: 0px;
 }
 
-#author{
-  color: white;
-  font-size: 8px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 // Yarn ball
 .yarn-container{
   position: relative;
@@ -82,33 +76,33 @@ body {
   width: 100%;
 }
 
-.yarn-ball{
-  height: 50px;
-  width: 50px;
-  background-color: $color-light-purple;
-  border: solid $color-purple;
-  border-radius: 50%;
-  display: inline-block;
-}
+// .yarn-ball{
+//   height: 50px;
+//   width: 50px;
+//   background-color: $color-light-purple;
+//   border: solid $color-purple;
+//   border-radius: 50%;
+//   display: inline-block;
+// }
 
-.yarn-strand {
-  margin: 0 auto;
-  position: relative;
-  width: 30px;
-  height: 40px;
-  border-top: 1px solid $color-purple;
-  border-left: 1px solid $color-purple;
-  border-top-left-radius: 200px;
-  float: none;
-  margin-top: 4.5px;
-  margin-left: 10px;
-  box-shadow: inset 1px 1px 0 $color-purple;
-}
+// .yarn-strand {
+//   margin: 0 auto;
+//   position: relative;
+//   width: 30px;
+//   height: 40px;
+//   border-top: 1px solid $color-purple;
+//   border-left: 1px solid $color-purple;
+//   border-top-left-radius: 200px;
+//   float: none;
+//   margin-top: 4.5px;
+//   margin-left: 10px;
+//   box-shadow: inset 1px 1px 0 $color-purple;
+// }
 
-.middle{
-  margin-top: 2px;
-  margin-left: 2px;
-}
+// .middle{
+//   margin-top: 2px;
+//   margin-left: 2px;
+// }
 
 .bottom{
   margin-top: 2px;
@@ -118,8 +112,8 @@ body {
 // Bow
 .knot{
   position: absolute;
-  top: 84%;
-  left: 45%;
+  top: 74%;
+  left: 43.5%;
   height:10px;
   width: 10px;
   border: solid darkred;
@@ -129,8 +123,8 @@ body {
 
 .loop{
   position: absolute;
-  top: 85%;
-  left: 23%;
+  top: 75%;
+  left: 21.5%;
   height:10%;
   width: 20%;
   border: solid darkred;
@@ -140,8 +134,8 @@ body {
 
 .mirror{
   position: absolute;
-  top:85%;
-  left:52%;
+  top:75%;
+  left:50.5%;
 }
 
 //Cat styling
@@ -164,16 +158,16 @@ body {
   background: $color-light-purple;
 
   // Ear hair
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 24%;
-    height: 10%;
-    width: 5%;
-    border-radius: 50%;
-    background: $color-black;
-  }
+  // &::before,
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 35%;
+  //   height: 10%;
+  //   width: 5%;
+  //   border-radius: 50%;
+  //   background: $color-black;
+  // }
 
   &::after {
     transform-origin: 50% 100%;

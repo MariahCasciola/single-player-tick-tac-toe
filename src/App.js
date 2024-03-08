@@ -1,6 +1,5 @@
 import "./App.css";
 import Board from "./Board";
-import Yarn from "./Yarn";
 
 function App() {
   return (
