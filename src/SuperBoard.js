@@ -1,23 +1,42 @@
 import React from "react";
-import Cell from "./Cell";
+import Board from "./Board";
 
 function SuperBoard() {
   return (
-    <div id="board">
+    <div id="super-board">
+      <h2 className="o">Super-Tic-Tac-Toe</h2>
       <div className="row center">
-        <Cell className="right-border bottom-border" />
-        <Cell className="right-border bottom-border" />
-        <Cell className="bottom-border" />
+        <div className="right-border bottom-border super-grid-buttons">
+          <Board />
+        </div>
+        <div className="right-border bottom-border super-grid-buttons">
+          <Board />
+        </div>
+        <div className="bottom-border super-grid-buttons">
+          <Board />
+        </div>
       </div>
       <div className="row center">
-        <Cell className="right-border bottom-border" />
-        <Cell className="right-border bottom-border" />
-        <Cell className="bottom-border" />
+        <div className="right-border bottom-border super-grid-buttons">
+          <Board />
+        </div>
+        <div className="right-border bottom-border super-grid-buttons">
+          <Board />
+        </div>
+        <div className="bottom-border">
+          <Board />
+        </div>
       </div>
       <div className="row center">
-        <Cell className="right-border" />
-        <Cell className="right-border" />
-        <Cell className={""} />
+        <div className="right-border super-grid-buttons">
+          <Board />
+        </div>
+        <div className="right-border super-grid-buttons">
+          <Board />
+        </div>
+        <div className="">
+          <Board />
+        </div>
       </div>
     </div>
   );

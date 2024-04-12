@@ -186,70 +186,68 @@ function Board() {
   };
 
   return (
-    <main>
-      <div id="board">
-        <div className="row center">
-          <Cell
-            className="right-border bottom-border"
-            value={cells[0]}
-            clickHandler={() => clickHandler(0)}
-          />
-          <Cell
-            className="right-border bottom-border"
-            value={cells[1]}
-            clickHandler={() => clickHandler(1)}
-          />
-          <Cell
-            className="bottom-border"
-            value={cells[2]}
-            clickHandler={() => clickHandler(2)}
-          />
-        </div>
-        <div className="row center">
-          <Cell
-            className="right-border bottom-border"
-            value={cells[3]}
-            clickHandler={() => clickHandler(3)}
-          />
-          <Cell
-            className="right-border bottom-border"
-            value={cells[4]}
-            clickHandler={() => clickHandler(4)}
-          />
-          <Cell
-            className="bottom-border"
-            value={cells[5]}
-            clickHandler={() => clickHandler(5)}
-          />
-        </div>
-        <div className="row center">
-          <Cell
-            className="right-border"
-            value={cells[6]}
-            clickHandler={() => clickHandler(6)}
-          />
-          <Cell
-            className="right-border"
-            value={cells[7]}
-            clickHandler={() => clickHandler(7)}
-          />
-          <Cell
-            className={""}
-            value={cells[8]}
-            clickHandler={() => clickHandler(8)}
-          />
-        </div>
-        <div id="status" className="center">
-          {status()}
-        </div>
-        <Restart
-          newGame={() => {
-            newGame();
-          }}
-          status={status()}
+    <div id="board">
+      <div className="row center">
+        <Cell
+          className="right-border bottom-border"
+          value={cells[0]}
+          clickHandler={() => clickHandler(0)}
+        />
+        <Cell
+          className="right-border bottom-border"
+          value={cells[1]}
+          clickHandler={() => clickHandler(1)}
+        />
+        <Cell
+          className="bottom-border"
+          value={cells[2]}
+          clickHandler={() => clickHandler(2)}
         />
       </div>
-    </main>
+      <div className="row center">
+        <Cell
+          className="right-border bottom-border"
+          value={cells[3]}
+          clickHandler={() => clickHandler(3)}
+        />
+        <Cell
+          className="right-border bottom-border"
+          value={cells[4]}
+          clickHandler={() => clickHandler(4)}
+        />
+        <Cell
+          className="bottom-border"
+          value={cells[5]}
+          clickHandler={() => clickHandler(5)}
+        />
+      </div>
+      <div className="row center">
+        <Cell
+          className="right-border"
+          value={cells[6]}
+          clickHandler={() => clickHandler(6)}
+        />
+        <Cell
+          className="right-border"
+          value={cells[7]}
+          clickHandler={() => clickHandler(7)}
+        />
+        <Cell
+          className={""}
+          value={cells[8]}
+          clickHandler={() => clickHandler(8)}
+        />
+      </div>
+      <div id="status" className="center">
+        {status()}
+      </div>
+      <Restart
+        newGame={() => {
+          newGame();
+        }}
+        status={status()}
+      />
+    </div>
   );
 }
 

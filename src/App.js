@@ -6,11 +6,6 @@ import Header from "./Header";
 import SuperBoard from "./SuperBoard";
 
 function App() {
-  const boardTypes = ["medium, super"];
-
-  // Click easy or medium or super button
-  const [currentType, setCurrentType] = useState("");
-
   return (
     <Router>
       <div>
@@ -18,7 +13,14 @@ function App() {
           {/* super*/}
           <Route path="/super" element={<SuperBoard />}></Route>
           {/*medium*/}
-          <Route path="/medium" element={<Board />}></Route>
+          <Route
+            path="/medium"
+            element={
+              <main>
+                <Board />
+              </main>
+            }
+          ></Route>
           {/* easy */}
           <Route path="/easy"></Route>
           {/*Home Page*/}
